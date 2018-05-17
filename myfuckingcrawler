@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+import json
+import xlwt
+res = requests.get("https://fund.cnyes.com/api/v1/fund/B16%2C009/nav?format=table&page=1")
+content = res.text
+soup = BeautifulSoup(content, 'lxml')
+data = json.loads(content)
+webdatas = data["items"]
+# for products in webdatas:
+for x in range (10):
+    print(data["items"]["data"][x]["nav"])
