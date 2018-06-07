@@ -8,6 +8,17 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
+def timestamp_datetime(value):
+    format = '%Y/%m/%d'
+    value = time.localtime(value)
+    dt = time.strftime(format, value)
+    return dt
+    
+def datetime_timestamp(dt):
+    time.strptime(dt, '%Y/%m/%d')
+    s = time.mktime(time.strptime(dt, '%Y/%m/%d'))
+    return int(s)
+    
 url = "https://fund.cnyes.com/api/v1/fund/B16%2C009/nav?format=table&page="
 for num in range(1, 20):
     get_url = url + str(num)
